@@ -34,6 +34,9 @@
           "codeCoverage": true
         }
       }
+    },
+    "server": {
+      "cache": true
     }
   },
   "namedInputs": {

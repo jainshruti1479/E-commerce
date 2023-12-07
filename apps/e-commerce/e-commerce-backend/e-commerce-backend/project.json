@@ -1,0 +1,61 @@
+{
+  "name": "e-commerce-e-commerce-backend-e-commerce-backend",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/e-commerce/e-commerce-backend/e-commerce-backend/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/e-commerce/e-commerce-backend/e-commerce-backend",
+        "main": "apps/e-commerce/e-commerce-backend/e-commerce-backend/src/main.ts",
+        "tsConfig": "apps/e-commerce/e-commerce-backend/e-commerce-backend/tsconfig.app.json",
+        "assets": [
+          "apps/e-commerce/e-commerce-backend/e-commerce-backend/src/assets"
+        ],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/e-commerce/e-commerce-backend/e-commerce-backend/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "e-commerce-e-commerce-backend-e-commerce-backend:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "e-commerce-e-commerce-backend-e-commerce-backend:build:development"
+        },
+        "production": {
+          "buildTarget": "e-commerce-e-commerce-backend-e-commerce-backend:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/e-commerce/e-commerce-backend/e-commerce-backend/**/*.ts"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/e-commerce/e-commerce-backend/e-commerce-backend/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}

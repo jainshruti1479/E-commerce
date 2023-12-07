@@ -1,0 +1,35 @@
+{
+  "name": "e-commerce-e-commerce-frontend-e-commerce-frontend-e2e",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/e-commerce/e-commerce-frontend/e-commerce-frontend-e2e/src",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/e-commerce/e-commerce-frontend/e-commerce-frontend-e2e/cypress.config.ts",
+        "testingType": "e2e",
+        "devServerTarget": "e-commerce-e-commerce-frontend-e-commerce-frontend:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "e-commerce-e-commerce-frontend-e-commerce-frontend:serve:production"
+        },
+        "ci": {
+          "devServerTarget": "e-commerce-e-commerce-frontend-e-commerce-frontend:serve-static"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/e-commerce/e-commerce-frontend/e-commerce-frontend-e2e/**/*.{js,ts}"
+        ]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["e-commerce-e-commerce-frontend-e-commerce-frontend"]
+}
