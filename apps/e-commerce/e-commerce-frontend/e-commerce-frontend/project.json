@@ -21,9 +21,12 @@
           "apps/e-commerce/e-commerce-frontend/e-commerce-frontend/src/assets"
         ],
         "styles": [
-          "apps/e-commerce/e-commerce-frontend/e-commerce-frontend/src/styles.scss"
+          "apps/e-commerce/e-commerce-frontend/e-commerce-frontend/src/styles.scss",
+          "node_modules/bootstrap/scss/bootstrap.scss"
         ],
-        "scripts": []
+        "scripts": [
+          "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+        ]
       },
       "configurations": {
         "production": {

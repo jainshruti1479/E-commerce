@@ -1,0 +1,49 @@
+<!-- signup.component.html -->
+
+<div class="container">
+    <div class="mt-5">
+        <h2 class="text-center">Signup Here</h2>
+        <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="mt-4">
+            <div class="mb-3">
+              <label for="username" class="form-label">Username:</label>
+              <input type="text" id="username" formControlName="username" class="form-control" />
+              <div *ngIf="signupForm.get('username')?.hasError('required') && signupForm.get('username')?.touched"
+                class="text-danger">
+                Username is required.
+              </div>
+              <div *ngIf="signupForm.get('username')?.hasError('minlength') && signupForm.get('username')?.touched"
+                class="text-danger">
+                Username must be at least 3 characters long.
+              </div>
+            </div>
+          
+            <div class="mb-3">
+              <label for="email" class="form-label">Email:</label>
+              <input type="email" id="email" formControlName="email" class="form-control" />
+              <div *ngIf="signupForm.get('email')?.hasError('required') && signupForm.get('email')?.touched" class="text-danger">
+                Email is required.
+              </div>
+              <div *ngIf="signupForm.get('email')?.hasError('email') && signupForm.get('email')?.touched" class="text-danger">
+                Please enter a valid email address.
+              </div>
+            </div>
+          
+            <div class="mb-3">
+              <label for="password" class="form-label">Password:</label>
+              <input type="password" id="password" formControlName="password" class="form-control" />
+              <div *ngIf="signupForm.get('password')?.hasError('required') && signupForm.get('password')?.touched"
+                class="text-danger">
+                Password is required.
+              </div>
+              <div *ngIf="signupForm.get('password')?.hasError('minlength') && signupForm.get('password')?.touched"
+                class="text-danger">
+                Password must be at least 6 characters long.
+              </div>
+            </div>
+          
+            <button type="submit" class="btn btn-primary" [disabled]="!signupForm.valid">Sign Up</button>
+          </form>
+    </div>
+
+</div>
+  
